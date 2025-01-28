@@ -9,7 +9,6 @@
 #include <algorithm>
 #include <sstream>
 #include <vector>
-// Напишите здесь тесты для функции collision_detector::FindGatherEvents
 
 using Catch::Matchers::Contains;
 using Catch::Matchers::WithinRel;
@@ -83,7 +82,6 @@ struct IsPermutationMatcher : Catch::Matchers::MatcherGenericBase {
     }
 
     std::string describe() const override {
-        // Описание свойства, проверяемого матчером:
         return "Is permutation of: "s + Catch::rangeToString(range_);
     }
 
@@ -251,8 +249,8 @@ TEST_CASE("FindGatherEvents test case", "[gather events]") {
             Gatherer gatherer2{{3., 5.}, {5., 4.99}, 0.5};
 
             provider.AddItem(item)
-                .AddGatherer(gatherer1) // first gatherer takes the item later
-                .AddGatherer(gatherer2); // second gatherer takes the item erlier
+                .AddGatherer(gatherer1) 
+                .AddGatherer(gatherer2); 
 
             buffer_result = TryCollectPoint(gatherer2.start_pos, gatherer2.end_pos, item.position);
             right_events.push_back({0, 1, buffer_result.sq_distance, buffer_result.proj_ratio});
