@@ -13,7 +13,6 @@ using namespace std::literals;
 using pqxx::operator"" _zv;
 
 void ConnectionPool::ReturnConnection(ConnectionPtr&& conn) {
-    // Возвращаем соединение обратно в пул
     {
         std::lock_guard lock{mutex_};
         if (used_connections_ == 0) {
@@ -21,7 +20,6 @@ void ConnectionPool::ReturnConnection(ConnectionPtr&& conn) {
         }
         pool_[--used_connections_] = std::move(conn);
     }
-    // Уведомляем один из ожидающих потоков об изменении состояния пула
     cond_var_.notify_one();
 }
 

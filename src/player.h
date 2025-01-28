@@ -38,7 +38,7 @@ private:
 
 class PlayerTokens {
 public:
-    friend class serialization::PlayerTokenRepr; // breaching encapsulation but it's the best idea I had
+    friend class serialization::PlayerTokenRepr;
 
     PlayerTokens() = default;
 

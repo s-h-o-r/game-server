@@ -460,13 +460,13 @@ private:
 
         auto auth_content = request.base().at("Authorization");
         size_t auth_header_size = 39;
-        if (auth_content.size() < auth_header_size || auth_content.size() > auth_header_size) { // size of Bearer + ' ' + token.size()
+        if (auth_content.size() < auth_header_size || auth_content.size() > auth_header_size) {
             throw ErrorCode::invalid_token;
         }
 
         size_t prefix_size = 7;
         std::string_view token_prefix = auth_content.substr(0, prefix_size);
-        std::string_view token = auth_content.substr(prefix_size); // Extract token (delete Bearer before token)
+        std::string_view token = auth_content.substr(prefix_size);
 
         if (std::size_t token_size = 32; token_prefix != "Bearer " || token.size() != token_size) {
             throw ErrorCode::invalid_token;

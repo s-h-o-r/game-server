@@ -241,7 +241,6 @@ private:
 
     std::vector<ApplicationListener*> listeners_;
 
-    // create all scenario below
     GetMapUseCase get_map_use_case_{game_};
     ListMapsUseCase list_maps_use_case_{game_};
     GetPlayersInfoUseCase get_players_info_use_case_{&players_, &tokens_};

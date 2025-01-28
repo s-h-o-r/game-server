@@ -50,7 +50,6 @@ void SessionBase::OnWrite(bool close, beast::error_code ec, [[maybe_unused]] std
     }
 
     if (close) {
-        // Семантика ответа требует закрыть соединение
         return Close();
     }
 

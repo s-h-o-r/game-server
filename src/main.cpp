@@ -26,7 +26,6 @@ namespace net = boost::asio;
 
 namespace {
 
-// Запускает функцию fn на n потоках, включая текущий
 template <typename Fn>
 void RunWorkers(unsigned n, const Fn& fn) {
     n = std::max(1u, n);
@@ -36,7 +35,6 @@ void RunWorkers(unsigned n, const Fn& fn) {
     std::vector<std::thread> workers;
     #endif
     workers.reserve(n - 1);
-    // Запускаем n-1 рабочих потоков, выполняющих функцию fn
     while (--n) {
         workers.emplace_back(fn);
     }
@@ -78,7 +76,7 @@ int main(int argc, const char* argv[]) {
     }
 
     try {
-        // 1. Загружаем карту из файла и построить модель игры
+        // 1. Загружаем карту из файла и строим модель игры
         model::Game game = json_loader::LoadGame(cl_args.config_file_path);
         app::Application app(&game, GetConfigFromEnv());
 
@@ -152,7 +150,6 @@ int main(int argc, const char* argv[]) {
         constexpr net::ip::port_type port = 8080;
         http_server::ServeHttp(ioc, {address, port}, logging_handler);
 
-        // Эта надпись сообщает тестам о том, что сервер запущен и готов обрабатывать запросы
         http_logger::LogServerStart(port, address.to_string());
 
         // 6. Запускаем обработку асинхронных операций

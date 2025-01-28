@@ -97,8 +97,7 @@ private:
     double width_ = 0.5;
 };
 
-class Map { // todo: сделать класс более надежным к ошибкам конфиг файла (вынести все дефолтные атрибуты в качестве обязательных в конструктор)
-            // пока же дефолтное значение скорости устанавливается через функцию
+class Map {
 public:
     using Id = util::Tagged<std::string, Map>;
     using Roads = std::deque<Road>;

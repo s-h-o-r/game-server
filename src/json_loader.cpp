@@ -83,9 +83,6 @@ model::Map PrepareMap(json::object& map_info, double default_dog_speed, size_t d
 }
 
 model::Game LoadGame(const std::filesystem::path& json_path) {
-    // Загрузить содержимое файла json_path, например, в виде строки
-    // Распарсить строку как JSON, используя boost::json::parse
-    // Загрузить модель игры из файла
     model::Game game;
 
     std::ifstream json(json_path);

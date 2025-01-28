@@ -12,10 +12,8 @@ struct CollectionResult {
         return proj_ratio >= 0 && proj_ratio <= 1 && sq_distance <= collect_radius * collect_radius;
     }
 
-    // квадрат расстояния до точки
     double sq_distance;
 
-    // доля пройденного отрезка
     double proj_ratio;
 };
 

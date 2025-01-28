@@ -66,7 +66,6 @@ private:
     size_t capacity_ = 0;
 };
 
-// DogRepr (DogRepresentation) - сериализованное представление класса Dog
 class DogRepr {
 public:
     DogRepr() = default;

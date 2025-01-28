@@ -163,7 +163,6 @@ void Map::AddOffice(Office&& office) {
     try {
         warehouse_id_to_index_.emplace(o.GetId(), index);
     } catch (...) {
-        // Удаляем офис из вектора, если не удалось вставить в unordered_map
         offices_.pop_back();
         throw;
     }
@@ -388,7 +387,7 @@ Dog* GameSession::AddDog(std::string_view name) {
     }
 
     geom::Point2D dog_pos = {static_cast<double>(start_point.x),
-                                static_cast<double>(start_point.y)}; // map_->GetRandomDogPoint();
+                                static_cast<double>(start_point.y)};
 
     auto dog = std::make_shared<Dog>(Dog::Id{next_dog_id_++}, std::string(name), dog_pos, default_speed, map_->GetBagCapacity());
     auto dog_id = dog->GetId();
@@ -452,7 +451,7 @@ void GameSession::Restore(IdToDogIndex&& dogs, std::uint32_t next_dog_id, IdToLo
 
 
 void GameSession::UpdateDogsState(std::int64_t tick) {
-    double ms_convertion = 0.001; // 1ms = 0.001s
+    double ms_convertion = 0.001;
     double tick_multy = static_cast<double>(tick) * ms_convertion;
 
     for (auto [_, dog] : dogs_) {
