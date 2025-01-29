@@ -30,7 +30,13 @@ conan install .. -s compiler.libcxx=libstdc++11 --build=missing -s build_type=Re
 cmake -DCMAKE_BUILD_TYPE=Release ..
 cmake --build .
 ```
-5. Сервер может быть запущен с различными параметрами. Вот все доступные параметры. Их также можно получить с помощью парамтра `-h` к исполняемому файлу:
+5.Перед запуском сервера необходимо определить переменную среды окружения `GAME_DB_URL` для того, чтобы сервер смог сохранять таблицу лидеров в базу данных. Переменная среды должна быть представлена в формате URL и иметь следующий вид:
+```
+postgres://user:pass@host:port/dbname
+```
+Как установить переменную среды окружения на вашей системе вы можете посмотреть по следующим ссылкам: [Linux](https://wiki.merionet.ru/articles/peremennye-okruzheniya-v-linux-kak-posmotret-ustanovit-i-sbrosit) (подойдет для MacOS с оболочкой bash или zsh) и [Windows](https://ru.stackoverflow.com/questions/229/%D0%9A%D0%B0%D0%BA-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%B8%D1%82%D1%8C-%D0%BF%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%83%D1%8E-%D0%BE%D0%BA%D1%80%D1%83%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B2-windows).
+
+6. Сервер может быть запущен с различными параметрами. Вот все доступные параметры. Их также можно получить с помощью парамтра `-h` к исполняемому файлу:
 ```
 Basic usage: game_server
   --tick-period <tick-period in ms> (optional)
