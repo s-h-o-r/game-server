@@ -28,4 +28,4 @@ COPY --from=build /app/build/game_server /app/
 COPY ./data /app/data
 COPY ./static /app/static
 
-ENTRYPOINT ["/app/game_server", "-c/app/data/config.json", "-w/app/static/", "--tick-period50", "--randomize-spawn-points"]
+ENTRYPOINT ["/app/game_server", "-c/app/data/config.json", "-w/app/static/", "--tick-period=50", "--randomize-spawn-points"]
